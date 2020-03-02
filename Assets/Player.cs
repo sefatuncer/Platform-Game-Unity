@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             Vector3 yon = transform.localScale;
             yon.x *= -1;
             transform.localScale = yon;
-            Debug.Log(sagaBak);
+            //Debug.Log(sagaBak);
         }
     }
 
