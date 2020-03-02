@@ -7,4 +7,5 @@ Oyun Programlama dersinde Unity oyun motoru kullanılarak C# diliyle gerçekleş
 - Prefablar
 - Animasyonlar
 vb. bulunmaktadır.
+
 Uygulamaya eklentiler yapıldıkça her ders güncellenecektir.
