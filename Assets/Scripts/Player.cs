@@ -8,14 +8,18 @@ public class Player : MonoBehaviour
     private Rigidbody2D fizik; // fizik kuralları
     private Animator myAnimator;
 
- 
-    
-
     [SerializeField] // Attribute : Davranış yapıları
     private float hiz;
 
     [SerializeField]
     private Text toplamSkor;
+
+    [SerializeField]
+    private GameObject anahtarVar;
+
+    [SerializeField]
+    private GameObject kapiAcik;
+
 
     private bool sagaBak;
     private int skor;
@@ -46,10 +50,17 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "altin")
         {
-            other.gameObject.SetActive(false);
+            other.gameObject.SetActive(false); // çarpılan objeyi yok et
             skor = skor + 100;
             SkorAyarla(skor);
         }
+        if(other.gameObject.tag == "anahtar")
+        {
+            other.gameObject.SetActive(false);
+            anahtarVar.SetActive(true);
+            kapiAcik.SetActive(true);
+        }
+
     }
 
     private void TemelHareketler(float yatay)
@@ -74,6 +85,6 @@ public class Player : MonoBehaviour
 
     private void SkorAyarla(int count)
     {
-        toplamSkor.text = count.ToString();
+        toplamSkor.text = "Skor : " + count.ToString();
     }
 }

@@ -1,0 +1,1 @@
+Animasyonların birbiri ile bağlantısının sağlandığı yapıyı tutan .controller uzantılı dosyalardır.
