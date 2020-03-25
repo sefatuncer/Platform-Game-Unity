@@ -45,6 +45,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Kapı.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Animations\not.txt" />
  <Reference Include="UnityEngine">

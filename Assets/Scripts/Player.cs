@@ -20,6 +20,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject kapiAcik;
 
+    [SerializeField]
+    private AudioSource altinSes;
+
+    [SerializeField]
+    private AudioSource anahtarSes;
+
 
     private bool sagaBak;
     private int skor;
@@ -53,12 +59,14 @@ public class Player : MonoBehaviour
             other.gameObject.SetActive(false); // çarpılan objeyi yok et
             skor = skor + 100;
             SkorAyarla(skor);
+            altinSes.Play();
         }
         if(other.gameObject.tag == "anahtar")
         {
             other.gameObject.SetActive(false);
             anahtarVar.SetActive(true);
             kapiAcik.SetActive(true);
+            anahtarSes.Play();
         }
 
     }
