@@ -24,6 +24,7 @@ public class Kapı : MonoBehaviour
             kapiAcik.SetActive(true);
             kapiAcikSes.Play();
             other.gameObject.SetActive(false);
+            Application.LoadLevel(1);
         }
         else if(other.gameObject.tag == "Player")
         {
