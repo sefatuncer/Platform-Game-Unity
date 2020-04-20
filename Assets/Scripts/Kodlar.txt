@@ -1,0 +1,53 @@
+private void AtakHareketleri()
+{
+    if(atak)
+        myAnimator.SetTrigger("atak");
+}
+
+private void Kontroller()
+{
+    if (Input.GetKeyDown (KeyCode.T))
+    {
+        atak = true;
+    }
+}
+
+private void DegerleriResetle()
+{
+    atak = false;
+}
+
+private void TemelHareketler(float yatay)
+{
+    if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("atak"))
+    {
+        myRigidbody.velocity = new Vector2(yatay*hiz,myRigidbody.velocity.y);
+    }
+    myAnimator.SetFloat("karakterHizi",Mathf.Abs(yatay));
+}
+
+private void AtakHareketleri()
+{
+    if(atak && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("atak"))
+    {
+        myAnimator.SetTrigger("atak");
+        myRigidbody.velocity = Vector2.zero;
+    }
+}
+
+private void TemelHareketler(float yatay)
+{
+    if(!myAnimator.GetBool("kayma") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("atak"))
+    {
+        myRigidbody.velocity = new Vector2(yatay*hiz,myRigidbody.velocity.y);
+    }
+    if(kayma && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+    {
+        myAnimator.SetBool("kayma", true);
+    }
+    else if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+    {
+        myAnimator.SetBool("kayma", false);
+    }
+    myAnimator.SetFloat("karakterHizi",Mathf.Abs(yatay));
+}
