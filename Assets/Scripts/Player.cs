@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
 
     private bool atak;
     private bool zipla;
+    private bool kayma;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         // Nesnenin x eksenindeki değer float
         // olan "yatay" değişkenine atanır
         float yatay = Input.GetAxis("Horizontal");
+        
         TemelHareketler(yatay);
         YonCevir(yatay);
         AtakHareketleri();
@@ -83,12 +85,19 @@ public class Player : MonoBehaviour
 
     private void TemelHareketler(float yatay)
     {
-        // velocity = hız
-        fizik.velocity = new Vector2(yatay*hiz, fizik.velocity.y);
+        if(!myAnimator.GetBool("kayma") && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("atak"))
+        {
+            fizik.velocity = new Vector2(yatay*hiz,fizik.velocity.y);
+        }
+        if(kayma && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        {
+            myAnimator.SetBool("kayma", true);
+        }
+        else if(!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        {
+            myAnimator.SetBool("kayma", false);
+        }
         myAnimator.SetFloat("karakterHizi",Mathf.Abs(yatay));
-
-        if(zipla)
-            fizik.AddForce(new Vector2(0,300));
     }
 
     private void YonCevir(float yatay)
@@ -111,8 +120,11 @@ public class Player : MonoBehaviour
     // trigger = tetikleyici
     private void AtakHareketleri()
     {
-        if(atak) // atak == true ise
+        if(atak && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("atakTrigger"))
+        {
             myAnimator.SetTrigger("atakTrigger");
+            fizik.velocity = Vector2.zero;
+        }
     }
 
     private void Kontroller()
@@ -121,9 +133,14 @@ public class Player : MonoBehaviour
         {
             atak = true;
         }
+
         if(Input.GetKeyDown (KeyCode.Space))
         {
             zipla = true;
+        }
+        if(Input.GetKeyDown (KeyCode.Y))
+        {
+            kayma = true;
         }
     }
 
@@ -131,6 +148,7 @@ public class Player : MonoBehaviour
     {
         atak = false;
         zipla = false;
+        kayma = false;
     }
 
 }
