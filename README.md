@@ -1,11 +1,10 @@
-# ilkOyun
-Oyun Programlama dersinde Unity oyun motoru kullanılarak C# diliyle gerçekleştirilen uygulama.
+# Platform Game
+An application in C# language using the Unity game engine in Game Programming lesson.
 
-İçerisinde
-- Asset'ler
-- Scriptler
-- Prefablar
-- Animasyonlar
-vb. bulunmaktadır.
+Those included in
+- Assets
+- Scripts
+- Prefabs
+- Animations
 
-Uygulamaya eklentiler yapıldıkça her ders güncellenecektir.
+Each lesson will be updated as add-ons are made to the application.
